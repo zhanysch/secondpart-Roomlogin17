@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">16 Room</string>
+    <string name="add">добавить</string>
+    <string name="description">Описание</string>
+    <string name="Headness">Заголовок</string>
+    <string name="save">сохранить</string>
+    <string name="delete">Delete</string>
+
+</resources>
