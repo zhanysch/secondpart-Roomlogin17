@@ -4,11 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import c.sql.App
 import c.sql.Data.DataBaseAbstrct
 import c.sql.Data.DataClassEdit
 import c.sql.R
 import kotlinx.android.synthetic.main.activity_show.*
-import kotlinx.android.synthetic.main.activity_show.view.*
 
 class ShowActivity : AppCompatActivity() {
    private var db: DataBaseAbstrct?=null

@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.GridLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+import c.sql.App
 import c.sql.Data.DataBaseAbstrct
 import c.sql.Data.DataClassEdit
 import c.sql.R

@@ -1,8 +1,7 @@
-package c.sql.ui
+package c.sql
 
 import android.app.Application
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import c.sql.Data.DataBaseAbstrct
 
 class App: Application() {   //(class aplication всегда нужно указыва в манифесте!!!
@@ -11,7 +10,7 @@ class App: Application() {   //(class aplication всегда нужно ука�
 
     override fun onCreate() {
         super.onCreate()
-        app=this
+        app =this
         db= Room.databaseBuilder(this, DataBaseAbstrct :: class.java,"DataBase")
             .allowMainThreadQueries() // эта функц при нажати кнопки сохр, позволяет сохран в главн потоке тоесть внутри телефона. при сохранен внтури телефона телефон зависает
                 //  сохранен в главн потоке внутри телефон нежелательно
