@@ -3,6 +3,7 @@ package c.sql.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.widget.Toast
 import c.sql.App
 import c.sql.Data.DataBaseAbstrct
@@ -22,23 +23,29 @@ class ScreenForLogPass : AppCompatActivity() {
     }
 
     private fun Listeners() {
+
         btnLogin.setOnClickListener {
             val result = App.app?.getDB()?.getDaoInterf()?.getEditfromdata()?.last()
-           EdOne.setText(result?.edlog)
+            EdOne.setText(result?.edlog)
             EdTwo.setText(result?.edpass)
 
-            val intent = Intent(this,MainActivity::class.java)
-            startActivity(intent)
+            if ( result?.edpass == EdTwo.text.toString() && result?.edlog == EdOne.text.toString())
+            { EdOne.setText(result?.edlog)
+                EdTwo.setText(result?.edpass)
+                val intent = Intent(this,MainActivity::class.java)
+                startActivity(intent)
+            }else  {
+                Toast.makeText(this, "Данные не верны", Toast.LENGTH_LONG).show()
+            }
         }
 
         btnSave.setOnClickListener {
             if (isEdNotEmpty()){
-                App.app?.getDB()?.getDaoInterf()?.saveforScreenLogPAss(DataclassLogPass(
+                App.app?.getDB()?.getDaoInterf()?.saveforScreenLogPAss(
+                    DataclassLogPass(
                     edlog = EdOne.text.toString(),
                     edpass = EdTwo.text.toString())
                 )
-
-
                 val intent = Intent(this,MainActivity::class.java)
                 startActivity(intent)
               }else{

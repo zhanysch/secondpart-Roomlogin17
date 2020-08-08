@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(), ItemListener {
     private var db: DataBaseAbstrct?=null // благодаря db: DataBaseAbstrct? осушеств передача таблиц
 
     private var  adapterGrd :GridAdapter? = null  // делаетс глобал, для возможн перезаписать
-    val adapter = LinearAdapter()
+    val adapter = LinearAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +51,24 @@ class MainActivity : AppCompatActivity(), ItemListener {
 
 
 
+
+    private fun recycadapt() {
+        val adapter= LinearAdapter(this)
+        recl.adapter = adapter
+        val list = db?.getDaoInterf()?.getEditfromdata()
+        if (list!=null)
+            adapter.update(list)
+    }
+
+    override fun itemClicks(data1: DataclassLogPass) {
+        db?.getDaoInterf()?.delete2(data1)
+        val newdate = db?.getDaoInterf()?.getEditfromdata()
+        if (newdate!=null)
+            adapter?.update(newdate)
+    }
+
+
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
@@ -72,12 +90,6 @@ class MainActivity : AppCompatActivity(), ItemListener {
     }
 
 
-    private fun recycadapt() {
-        val adapter= LinearAdapter()
-        recl.adapter = adapter
-        val list = db?.getDaoInterf()?.getEditfromdata()
-        if (list!=null)
-            adapter.update(list)
-    }
+
 
 }
