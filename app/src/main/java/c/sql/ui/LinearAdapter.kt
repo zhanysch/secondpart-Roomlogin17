@@ -45,7 +45,6 @@ class LinearAdapter(private val  listen: ItemListener):RecyclerView.Adapter<Line
            itemView.BtnDelete.setOnClickListener {
                listen.itemClicks(item)
            }
-
         }
     }
 }

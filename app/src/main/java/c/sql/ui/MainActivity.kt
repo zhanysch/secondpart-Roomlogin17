@@ -53,7 +53,6 @@ class MainActivity : AppCompatActivity(), ItemListener {
 
 
     private fun recycadapt() {
-        val adapter= LinearAdapter(this)
         recl.adapter = adapter
         val list = db?.getDaoInterf()?.getEditfromdata()
         if (list!=null)
@@ -88,8 +87,4 @@ class MainActivity : AppCompatActivity(), ItemListener {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
-
-
 }

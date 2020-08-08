@@ -23,13 +23,13 @@ class ScreenForLogPass : AppCompatActivity() {
     }
 
     private fun Listeners() {
-
         btnLogin.setOnClickListener {
             val result = App.app?.getDB()?.getDaoInterf()?.getEditfromdata()?.last()
             EdOne.setText(result?.edlog)
             EdTwo.setText(result?.edpass)
 
-            if ( result?.edpass == EdTwo.text.toString() && result?.edlog == EdOne.text.toString())
+            if ( result?.edpass == EdTwo.text.toString()
+                && result?.edlog == EdOne.text.toString())
             { EdOne.setText(result?.edlog)
                 EdTwo.setText(result?.edpass)
                 val intent = Intent(this,MainActivity::class.java)
@@ -60,5 +60,4 @@ class ScreenForLogPass : AppCompatActivity() {
 
         return login && pass
     }
-
 }
