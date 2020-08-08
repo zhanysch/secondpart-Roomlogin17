@@ -7,4 +7,70 @@
     android:layout_height="match_parent"
     tools:context=".ui.ScreenForLogPass">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/tiplogin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    android:textSize="20dp"
+    android:hint="@string/login"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_marginTop="200dp">
+  <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/EdOne"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+</com.google.android.material.textfield.TextInputLayout>
+
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/tipass"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="20dp"
+      android:hint="@string/password"
+      app:layout_constraintTop_toBottomOf="@+id/tiplogin"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      android:layout_margin="40dp">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/EdTwo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+  </com.google.android.material.textfield.TextInputLayout>
+
+
+
+  <Button
+    android:id="@+id/btnSave"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/save"
+    android:background="@color/unknown"
+    app:layout_constraintTop_toBottomOf="@+id/tipass"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="25dp"/>
+
+  <Button
+      android:id="@+id/btnLogin"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/login"
+      android:background="@color/unknown"
+      app:layout_constraintTop_toBottomOf="@+id/btnSave"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_marginTop="25dp"/>
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

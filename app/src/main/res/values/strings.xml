@@ -6,4 +6,7 @@
     <string name="save">сохранить</string>
     <string name="delete">Delete</string>
 
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+
 </resources>

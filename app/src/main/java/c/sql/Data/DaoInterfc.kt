@@ -1,9 +1,6 @@
 package c.sql.Data
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao  //( эта функц делает запрос в базу данных)
 interface DaoInterfc {
@@ -16,5 +13,18 @@ interface DaoInterfc {
                                                         // из БД невозможно возваращать arralist^ поэтому List<DataClassEdit>
     @Delete
     fun delete(data: DataClassEdit)   // внутрь скобок вставл (data: DataClassEdit), тогда функц будет знать что удалить.
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE) //чтоб данные при лог и пасс не совпадали REPLACE будет изменять лог пасс
+    fun saveforScreenLogPAss(logpasss : DataclassLogPass)
+
+    @Query ("SELECT * FROM DataclassLogPass")
+    fun getEditfromdata(): List<DataclassLogPass>
+
+    @Query("SELECT * FROM DataclassLogPass WHERE edlog = :loginT AND edpass= :passwordT")
+    fun getUSer(loginT:String, passwordT:String):DataclassLogPass
+
+    @Delete
+    fun delete2(data2 : DataclassLogPass)
+
 
 }

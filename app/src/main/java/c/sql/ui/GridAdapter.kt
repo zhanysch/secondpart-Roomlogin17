@@ -5,11 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import c.sql.Data.DataClassEdit
+import c.sql.Data.DataclassLogPass
 import c.sql.R
 import kotlinx.android.synthetic.main.item_grid.view.*
 
 class GridAdapter(private val  listener: ItemListener):RecyclerView.Adapter<GridAdapter.VHolder>() {
     private var data = arrayListOf<DataClassEdit>()
+
 
     /// (private val ^ listener: ItemListener) это значение рядом с GridAdapter чтоб могли созд метод удаления сохр БД
 

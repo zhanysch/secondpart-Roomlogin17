@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import c.sql.App
 import c.sql.Data.DataBaseAbstrct
 import c.sql.Data.DataClassEdit
+import c.sql.Data.DataclassLogPass
 import c.sql.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity(), ItemListener {
     private var db: DataBaseAbstrct?=null // благодаря db: DataBaseAbstrct? осушеств передача таблиц
 
     private var  adapterGrd :GridAdapter? = null  // делаетс глобал, для возможн перезаписать
+    val adapter = LinearAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity(), ItemListener {
         db = App.app?.getDB()
 
         recyclers()
+        recycadapt()
     }
 
 
@@ -39,13 +42,19 @@ class MainActivity : AppCompatActivity(), ItemListener {
             adapterGrd?.update(data)
     }
 
+    override fun itemClicked(data: DataClassEdit) {
+        db?.getDaoInterf()?.delete(data)
+        val newdata = db?.getDaoInterf()?.getallEditFromDataclass()
+        if (newdata!=null)
+            adapterGrd?.update(newdata)
+    }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
-
-
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -62,10 +71,13 @@ class MainActivity : AppCompatActivity(), ItemListener {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun itemClicked(data: DataClassEdit) {
-        db?.getDaoInterf()?.delete(data)
-        val newdata = db?.getDaoInterf()?.getallEditFromDataclass()
-        if (newdata!=null)
-            adapterGrd?.update(newdata)
+
+    private fun recycadapt() {
+        val adapter= LinearAdapter()
+        recl.adapter = adapter
+        val list = db?.getDaoInterf()?.getEditfromdata()
+        if (list!=null)
+            adapter.update(list)
     }
+
 }
