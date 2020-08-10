@@ -42,6 +42,7 @@ class LinearAdapter(private val  listen: ItemListener):RecyclerView.Adapter<Line
     class ShowVh(view:View):RecyclerView.ViewHolder(view){
         fun bind (item: DataclassLogPass,  listen: ItemListener){
             itemView.text1.text=item.edlog
+            itemView.text2.text=item.edpass
            itemView.BtnDelete.setOnClickListener {
                listen.itemClicks(item)
            }
