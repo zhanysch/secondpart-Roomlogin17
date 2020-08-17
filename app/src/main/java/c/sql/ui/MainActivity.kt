@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), ItemListener {
         db = App.app?.getDB()
 
         recyclers()
-        recycadapt()
+        //recycadapt()
     }
 
 
@@ -37,9 +37,18 @@ class MainActivity : AppCompatActivity(), ItemListener {
          adapterGrd = GridAdapter(this)      //adapterGrd это переменная // (this)  для функции удаления кнопки delete
         recycler.adapter = adapterGrd
         val data = db?.getDaoInterf()?.getallEditFromDataclass()
+        val list = db?.getDaoInterf()?.getEditfromdata()
+        val newArr = arrayListOf<DataClassEdit>()
+        newArr.addAll(ArrayList(data))
+        newArr.addAll(ArrayList(list?.map { DataClassEdit(it.id,it.edlog,it.edpass) }))
 
-        if (data!=null)                               // проверка что data не = null, т.к adapterGrd.update(data) выходит ошибка
-            adapterGrd?.update(data)
+        if (newArr.isNotEmpty())
+            adapterGrd?.update(newArr)
+
+                                      // проверка что data не = null, т.к adapterGrd.update(data) выходит ошибка
+
+
+
     }
 
     override fun itemClicked(data: DataClassEdit) {
@@ -50,14 +59,12 @@ class MainActivity : AppCompatActivity(), ItemListener {
     }
 
 
-
-
-    private fun recycadapt() {
-        recl.adapter = adapter
-        val list = db?.getDaoInterf()?.getEditfromdata()
-        if (list!=null)
-            adapter.update(list)
-    }
+//    private fun recycadapt() {
+//        recl.adapter = adapter
+//        val list = db?.getDaoInterf()?.getEditfromdata()
+//        if (list!=null)
+//            adapter.update(list)
+//    }
 
     override fun itemClicks(data1: DataclassLogPass) {
         db?.getDaoInterf()?.delete2(data1)
