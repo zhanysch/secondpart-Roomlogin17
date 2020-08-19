@@ -44,11 +44,7 @@ class MainActivity : AppCompatActivity(), ItemListener {
 
         if (newArr.isNotEmpty())
             adapterGrd?.update(newArr)
-
-                                      // проверка что data не = null, т.к adapterGrd.update(data) выходит ошибка
-
-
-
+        // проверка что data не = null, т.к adapterGrd.update(data) выходит ошибка
     }
 
     override fun itemClicked(data: DataClassEdit) {
